@@ -1,2 +1,3 @@
-# dotfiles
-Testing dotfiles
+# Dotfiles
+
+Testing out dotfile configurations
