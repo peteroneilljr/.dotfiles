@@ -60,3 +60,34 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias reload='source ~/.zshrc'
+
+# Terraform Aliases
+alias t13='curl -O https://releases.hashicorp.com/terraform/0.13.1/terraform_0.13.1_linux_amd64.zip && unzip terraform*.zip && rm terraform*.zip && chmod +x terraform && sudo mv terraform /usr/local/bin/ || echo "Something went wrong"'
+alias t12='curl -O https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip && unzip terraform_*.zip && rm terraform_*.zip && sudo mv terraform /usr/local/bin/ || echo "Something went wrong"'
+alias tsdmlinux='[ -d ".terraform" ] && curl -J -O -L https://app.strongdm.com/downloads/terraform-provider/linux && unzip terraform-provider-sdm_v*.zip && rm terraform-provider-sdm_v*.zip && mv terraform-provider-sdm_v* .terraform/plugins/linux_amd64/ || echo "It looks like you are not in a terraform directory"'
+
+
+alias t='terraform'
+alias tver='terraform --version'
+
+alias ta='terraform apply'
+alias taaa='terraform apply -auto-approve'
+alias taaarf='terraform apply -auto-approve -refresh=false'
+alias tarf='terraform apply -refresh=false'
+
+alias tsl='terraform state list'
+alias tss='terraform state show'
+alias tsr='terraform state rm'
+
+alias tr='terraform refresh'
+alias tp='terraform plan'
+alias ti='terraform init'
+alias tf='terraform fmt'
+alias tfr='terraform fmt -recursive'
+alias tv='terraform validate'
+alias tg='terraform get -update && terraform init'
+
+alias tt='terraform taint'
+alias tc='terraform console'
+alias to='terraform output'
