@@ -110,7 +110,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Start SSH Agent
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/github
