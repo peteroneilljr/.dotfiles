@@ -31,4 +31,5 @@ then
   ln -sv ~/.dotfiles/.zshrc ~
 fi
 
-
+# install utilities
+sudo apt install -y unzip 
