@@ -113,3 +113,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Start SSH Agent
 eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/github
