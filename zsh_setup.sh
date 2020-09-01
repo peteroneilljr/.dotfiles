@@ -17,3 +17,8 @@ then
   # create symlink
   ln -sv ~/.dotfiles/.zshrc ~
 fi
+
+if [[ -z ~/.ssh/github ]];
+then
+  ssh-keygen -t rsa -b 4096 -C "peteroneilljr@gmail.com" -f $HOME/.ssh/github -P ""
+fi
