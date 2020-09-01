@@ -26,5 +26,4 @@ then
   ln -sv ~/.dotfiles/.zshrc ~
 fi
 
-#test
 
