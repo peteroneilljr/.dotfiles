@@ -21,4 +21,6 @@ fi
 if [[ -z ~/.ssh/github ]];
 then
   ssh-keygen -t rsa -b 4096 -C "peteroneilljr@gmail.com" -f $HOME/.ssh/github -P ""
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/github
 fi
