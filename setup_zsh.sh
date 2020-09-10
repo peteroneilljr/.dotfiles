@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -xe
 
 # ---------------------------------------------------------------------------- #
 #   # install zsh
@@ -43,8 +43,8 @@ fi
 if [[ ! -d "$HOME/plugins/.dotfiles" ]];
 then
   # Save current zshrc file if it exists
-  if [[ -f "$HOME/.zshrc" ]]; then mv $HOME/.zshrc $HOME/.zshrc.backup; fi
   git clone https://github.com/peteroneilljr/.dotfiles.git ~ && \
+  if [[ -f "$HOME/.zshrc" ]]; then mv $HOME/.zshrc $HOME/.zshrc.backup; fi && \
   ln -sv ~/.dotfiles/.zshrc ~ && \
   echo "Installed .dotfiles" || echo "Install failed"
 else
