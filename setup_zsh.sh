@@ -1,38 +1,57 @@
 #!/bin/bash -xe
 
-# install zsh
+# ---------------------------------------------------------------------------- #
+#   # install zsh
+# ---------------------------------------------------------------------------- #
 if ! command -V zsh; 
 then 
   apt install zsh -y
 fi
-
-if [[ "$ZSH" != "*/.oh-my-zsh" ]];
+# ---------------------------------------------------------------------------- #
+#   # https://github.com/ohmyzsh/ohmyzsh
+# ---------------------------------------------------------------------------- #
+if [[ "$ZSH" != "$HOME/.oh-my-zsh" ]];
 then
-  # https://github.com/ohmyzsh/ohmyzsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
   echo "Installed oh-my-zsh" || echo "Install failed"
+else
+  echo "oh-my-zsh already installed"
 fi
-
+# ---------------------------------------------------------------------------- #
+#   # Install zsh-autosuggestions plugin
+# ---------------------------------------------------------------------------- #
 if [[ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]];
 then
-  # Install zsh-autosuggestions plugin
   git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions && \
   echo "Installed zsh-autosuggestions" || echo "Install failed"
+else
+  echo "zsh-autosuggestions already installed"
 fi
-
+# ---------------------------------------------------------------------------- #
+#   # Install zsh-syntax-highlighting plugin
+# ---------------------------------------------------------------------------- #
 if [[ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]];
 then
-  # Install zsh-syntax-highlighting plugin
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting && \
   echo "Installed zsh-syntax-highlighting" || echo "Install failed"
+else
+  echo "zsh-syntax-highlighting already installed"
 fi
-
+# ---------------------------------------------------------------------------- #
+# Download dotfiles https://github.com/peteroneilljr/.dotfiles.git
+# ---------------------------------------------------------------------------- #
 if [[ -d "$HOME/plugins/.dotfiles" ]];
 then
   # Save current zshrc file if it exists
   if [[ -f "$HOME/.zshrc" ]]; then mv $HOME/.zshrc $HOME/.zshrc.backup; fi
-  # download .zshrc
   git clone https://github.com/peteroneilljr/.dotfiles.git ~ && \
   ln -sv ~/.dotfiles/.zshrc ~ && \
   echo "Installed .dotfiles" || echo "Install failed"
+else
+  echo ".dotfiles already installed"
 fi
+# ---------------------------------------------------------------------------- #
+# Cleanup file ownership and reload terminal
+# ---------------------------------------------------------------------------- #
+chown -R $USER:$USER $HOME
+source $HOME/.zshrc
