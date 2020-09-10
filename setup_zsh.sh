@@ -53,5 +53,5 @@ fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership and reload terminal
 # ---------------------------------------------------------------------------- #
-chown -R $USER:$USER $HOME
+chown -R $LOGNAME:$LOGNAME $HOME
 source $HOME/.zshrc
