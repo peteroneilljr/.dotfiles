@@ -21,16 +21,15 @@ export UPDATE_ZSH_DAYS=13
 plugins=(
   git 
   gitignore
-  ubuntu
   kubectl
   history
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
-# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ubuntu
+
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/kubectl
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history
-# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+# https://github.com/zsh-users/zsh-autosuggestions
 # https://github.com/zsh-users/zsh-syntax-highlighting
 
 source $ZSH/oh-my-zsh.sh
