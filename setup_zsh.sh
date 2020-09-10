@@ -1,4 +1,4 @@
-#!/bin/bash -xe
+#!/bin/bash -e
 
 # ---------------------------------------------------------------------------- #
 #   # install zsh
@@ -20,7 +20,7 @@ fi
 # ---------------------------------------------------------------------------- #
 #   # Install zsh-autosuggestions plugin
 # ---------------------------------------------------------------------------- #
-if [[ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]];
+if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]];
 then
   git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions && \
   echo "Installed zsh-autosuggestions" || echo "Install failed"
@@ -30,7 +30,7 @@ fi
 # ---------------------------------------------------------------------------- #
 #   # Install zsh-syntax-highlighting plugin
 # ---------------------------------------------------------------------------- #
-if [[ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]];
+if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]];
 then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting && \
   echo "Installed zsh-syntax-highlighting" || echo "Install failed"
@@ -40,7 +40,7 @@ fi
 # ---------------------------------------------------------------------------- #
 # Download dotfiles https://github.com/peteroneilljr/.dotfiles.git
 # ---------------------------------------------------------------------------- #
-if [[ -d "$HOME/plugins/.dotfiles" ]];
+if [[ ! -d "$HOME/plugins/.dotfiles" ]];
 then
   # Save current zshrc file if it exists
   if [[ -f "$HOME/.zshrc" ]]; then mv $HOME/.zshrc $HOME/.zshrc.backup; fi
