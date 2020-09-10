@@ -3,7 +3,7 @@
 # install zsh
 if ! command -V zsh; 
 then 
-  sudo apt install zsh -y
+  apt install zsh -y
 fi
 
 if [[ "$ZSH" != "*/.oh-my-zsh" ]];
