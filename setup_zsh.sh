@@ -10,7 +10,7 @@ fi
 # ---------------------------------------------------------------------------- #
 #   # https://github.com/ohmyzsh/ohmyzsh
 # ---------------------------------------------------------------------------- #
-if [[ "$ZSH" != "$HOME/.oh-my-zsh" ]];
+if [[ ! "$ZSH" != "$HOME/.oh-my-zsh" ]];
 then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
   echo "Installed oh-my-zsh" || echo "Install failed"
@@ -40,12 +40,12 @@ fi
 # ---------------------------------------------------------------------------- #
 # Download dotfiles https://github.com/peteroneilljr/.dotfiles.git
 # ---------------------------------------------------------------------------- #
-if [[ ! -d "$HOME/plugins/.dotfiles" ]];
+if [[ ! -d "$HOME/.dotfiles" ]];
 then
   # Save current zshrc file if it exists
-  git clone https://github.com/peteroneilljr/.dotfiles.git ~ && \
+  git clone https://github.com/peteroneilljr/.dotfiles.git $HOME/ && \
   if [[ -f "$HOME/.zshrc" ]]; then mv $HOME/.zshrc $HOME/.zshrc.backup; fi && \
-  ln -sv ~/.dotfiles/.zshrc ~ && \
+  ln -sv ~/.dotfiles/.zshrc $HOME && \
   echo "Installed .dotfiles" || echo "Install failed"
 else
   echo ".dotfiles already installed"
