@@ -29,6 +29,8 @@ fi
 
 if [[ -d "$HOME/plugins/.dotfiles" ]];
 then
+  # Save current zshrc file if it exists
+  if [[ -f "$HOME/.zshrc" ]]; then mv $HOME/.zshrc $HOME/.zshrc.backup; fi
   # download .zshrc
   git clone https://github.com/peteroneilljr/.dotfiles.git ~ && \
   ln -sv ~/.dotfiles/.zshrc ~ && \
