@@ -12,7 +12,7 @@ fi
 # ---------------------------------------------------------------------------- #
 if [[ ! "$ZSH" != "$HOME/.oh-my-zsh" ]];
 then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended && \
   echo "Installed oh-my-zsh" || echo "Install failed"
 else
   echo "oh-my-zsh already installed"
@@ -63,4 +63,5 @@ fi
 # Cleanup file ownership and reload terminal
 # ---------------------------------------------------------------------------- #
 chown -R $LOGNAME:$LOGNAME $HOME
-source $HOME/.zshrc
+chsh -s $(which zsh) $USER
+zsh
