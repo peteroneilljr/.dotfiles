@@ -60,7 +60,7 @@ if [[ -f "$HOME/.zshrc" ]] && [[ -L "$HOME/.zshrc" ]];
   else ln -sv ~/.dotfiles/.zshrc $HOME;
 fi
 # ---------------------------------------------------------------------------- #
-# Cleanup file ownership and reload terminal
+# Cleanup file ownership, change shell, and load zsh
 # ---------------------------------------------------------------------------- #
 chown -R $LOGNAME:$LOGNAME $HOME
 chsh -s $(which zsh) $USER
