@@ -44,11 +44,20 @@ if [[ ! -d "$HOME/.dotfiles" ]];
 then
   # Save current zshrc file if it exists
   git clone https://github.com/peteroneilljr/.dotfiles.git $HOME/ && \
-  if [[ -f "$HOME/.zshrc" ]]; then mv $HOME/.zshrc $HOME/.zshrc.backup; fi && \
-  ln -sv ~/.dotfiles/.zshrc $HOME && \
   echo "Installed .dotfiles" || echo "Install failed"
 else
   echo ".dotfiles already installed"
+fi
+# ---------------------------------------------------------------------------- #
+# Backup old zshrc and create a symlink to new zshrc
+# ---------------------------------------------------------------------------- #
+if [[ -f "$HOME/.zshrc" ]] && [[ ! -L "$HOME/.zshrc" ]]; 
+  then mv $HOME/.zshrc $HOME/.zshrc.backup; 
+fi
+
+if [[ -f "$HOME/.zshrc" ]] && [[ -L "$HOME/.zshrc" ]]; 
+  then echo ".zshrc already linked"; 
+  else ln -sv ~/.dotfiles/.zshrc $HOME;
 fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership and reload terminal
