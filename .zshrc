@@ -68,7 +68,6 @@ alias tsdmlinux='[ -d ".terraform" ] && curl -J -O -L https://app.strongdm.com/d
 
 
 alias t='terraform'
-alias tver='terraform --version'
 
 alias ta='terraform apply'
 alias taaa='terraform apply -auto-approve'
