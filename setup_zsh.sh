@@ -52,7 +52,7 @@ fi
 # Backup old zshrc and create a symlink to new zshrc
 # ---------------------------------------------------------------------------- #
 if [[ -f "$HOME/.zshrc" ]] && [[ ! -L "$HOME/.zshrc" ]]; 
-  then mv $HOME/.zshrc $HOME/.zshrc.backup; 
+  then mv $HOME/.zshrc $HOME/.zshrc.backup && echo "created zshrc backup"; 
 fi
 
 if [[ -f "$HOME/.zshrc" ]] && [[ -L "$HOME/.zshrc" ]]; 
