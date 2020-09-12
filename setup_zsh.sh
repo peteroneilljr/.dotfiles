@@ -13,7 +13,7 @@ fi
 # ---------------------------------------------------------------------------- #
 if ! command -V zsh; 
 then 
-  $PCK_MGR update -y
+  $PCK_MGR update -y --skip-broken
   $PCK_MGR install zsh -y
 fi
 # ---------------------------------------------------------------------------- #
@@ -71,6 +71,11 @@ fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership, change shell, and load zsh
 # ---------------------------------------------------------------------------- #
-chown -R $LOGNAME:$LOGNAME $HOME
-chsh -s $(type -p zsh) $USER
+if [[ $LOGNAME != "root" ]]; 
+then 
+  chown -R $LOGNAME:$LOGNAME $HOME
+  chsh -s "/usr/bin/zsh" $USER
+else
+  chsh -s "/bin/zsh" $USER
+fi
 zsh
