@@ -71,5 +71,5 @@ fi
 # Cleanup file ownership, change shell, and load zsh
 # ---------------------------------------------------------------------------- #
 chown -R $LOGNAME:$LOGNAME $HOME
-chsh -s $(which zsh) $USER
+chsh -s $(type -p zsh) $USER
 zsh
