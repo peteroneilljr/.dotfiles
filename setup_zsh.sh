@@ -4,9 +4,9 @@
 # Find package manager
 # ---------------------------------------------------------------------------- #
 if [[ -x "/usr/bin/apt-get" ]];
-  then PCK_MGR = "/usr/bin/apt-get"
+  then PCK_MGR="/usr/bin/apt-get"
 elif [[ -x "/usr/bin/yum" ]];
-  then PCK_MGR = "/usr/bin/yum"
+  then PCK_MGR="/usr/bin/yum"
 fi
 # ---------------------------------------------------------------------------- #
 #   # install zsh
