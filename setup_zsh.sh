@@ -19,7 +19,7 @@ fi
 # ---------------------------------------------------------------------------- #
 #   # https://github.com/ohmyzsh/ohmyzsh
 # ---------------------------------------------------------------------------- #
-if [[ "$ZSH" != "$HOME/.oh-my-zsh" ]];
+if [[ ! -d "$HOME/.oh-my-zsh" ]];
 then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended && \
   echo "Installed oh-my-zsh" || echo "Install failed"
