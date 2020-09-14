@@ -10,7 +10,7 @@ if [[ -x "/usr/bin/apt-get" ]];
   then PCK_MGR="/usr/bin/apt-get"
 elif [[ -x "/usr/bin/yum" ]];
   then PCK_MGR="/usr/bin/yum"
-else { echo "Not yum or apt exiting" && exit 1 }
+else echo "Not yum or apt exiting" 
 fi
 # ---------------------------------------------------------------------------- #
 #   # install zsh
