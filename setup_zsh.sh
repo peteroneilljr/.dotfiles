@@ -78,7 +78,7 @@ then
 else
   chsh -s "/bin/zsh" $LOGNAME
 fi
-if [[ "$ZSH" == "$HOME/.oh-my-zsh" ]] &&\
+if [[ -d "$HOME/.oh-my-zsh" ]] &&\
 [[ -d "$HOME/.dotfiles" ]] &&\
 [[ -L "$HOME/.zshrc" ]];
 then zsh
