@@ -1,5 +1,8 @@
 #!/bin/bash -xe
 
+# To install
+# sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/peteroneilljr/.dotfiles/master/setup_zsh.sh)"
+
 # ---------------------------------------------------------------------------- #
 # Find package manager
 # ---------------------------------------------------------------------------- #
@@ -13,8 +16,7 @@ fi
 # ---------------------------------------------------------------------------- #
 if ! command -V zsh; 
 then 
-  $PCK_MGR update -y --skip-broken
-  $PCK_MGR install zsh -y
+  $PCK_MGR install zsh -y || echo "failed zsh install, attempting $PCK_MGR update"; $PCK_MGR update -y --skip-broken; $PCK_MGR install zsh -y
 fi
 # ---------------------------------------------------------------------------- #
 #   # https://github.com/ohmyzsh/ohmyzsh
@@ -71,12 +73,12 @@ fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership, change shell, and load zsh
 # ---------------------------------------------------------------------------- #
-if [[ $LOGNAME != "root" ]]; 
+if [[ $LOGNAME == "root" ]]; 
 then 
+  chsh -s "/bin/zsh" $LOGNAME
+else
   chown -R $LOGNAME:$LOGNAME $HOME
   chsh -s "/usr/bin/zsh" $LOGNAME
-else
-  chsh -s "/bin/zsh" $LOGNAME
 fi
 
 # ---------------------------------------------------------------------------- #
