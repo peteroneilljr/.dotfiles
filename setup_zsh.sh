@@ -19,7 +19,7 @@ fi
 # ---------------------------------------------------------------------------- #
 #   # https://github.com/ohmyzsh/ohmyzsh
 # ---------------------------------------------------------------------------- #
-if [[ ! "$ZSH" != "$HOME/.oh-my-zsh" ]];
+if [[ "$ZSH" != "$HOME/.oh-my-zsh" ]];
 then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended && \
   echo "Installed oh-my-zsh" || echo "Install failed"
@@ -64,7 +64,7 @@ if [[ -f "$HOME/.zshrc" ]] && [[ ! -L "$HOME/.zshrc" ]];
   then mv $HOME/.zshrc $HOME/.zshrc.backup && echo "created zshrc backup"; 
 fi
 
-if [[ -f "$HOME/.zshrc" ]] && [[ -L "$HOME/.zshrc" ]]; 
+if [[ -L "$HOME/.zshrc" ]]; 
   then echo ".zshrc already linked"; 
   else ln -sv ~/.dotfiles/.zshrc $HOME;
 fi
@@ -74,8 +74,13 @@ fi
 if [[ $LOGNAME != "root" ]]; 
 then 
   chown -R $LOGNAME:$LOGNAME $HOME
-  chsh -s "/usr/bin/zsh" $USER
+  chsh -s "/usr/bin/zsh" $LOGNAME
 else
-  chsh -s "/bin/zsh" $USER
+  chsh -s "/bin/zsh" $LOGNAME
 fi
-zsh
+if [[ "$ZSH" == "$HOME/.oh-my-zsh" ]] &&\
+[[ -d "$HOME/.dotfiles" ]] &&\
+[[ -L "$HOME/.zshrc" ]];
+then zsh
+else echo "something went wrong"
+fi
