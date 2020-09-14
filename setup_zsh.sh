@@ -52,7 +52,7 @@ fi
 if [[ ! -d "$HOME/.dotfiles" ]];
 then
   # Save current zshrc file if it exists
-  git clone https://github.com/peteroneilljr/.dotfiles.git $HOME/ && \
+  git clone https://github.com/peteroneilljr/.dotfiles.git $HOME/.dotfiles && \
   echo "Installed .dotfiles" || echo "Install failed"
 else
   echo ".dotfiles already installed"
