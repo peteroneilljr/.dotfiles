@@ -10,7 +10,7 @@ if [[ -x "/usr/bin/apt-get" ]];
   then PCK_MGR="/usr/bin/apt-get"
 elif [[ -x "/usr/bin/yum" ]];
   then PCK_MGR="/usr/bin/yum"
-else ( echo "Not yum or apt exiting" && exit 1 )
+else { echo "Not yum or apt exiting" && exit 1 }
 fi
 # ---------------------------------------------------------------------------- #
 #   # install zsh
@@ -25,7 +25,7 @@ fi
 if [[ ! -d "$HOME/.oh-my-zsh" ]];
 then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended && \
-  echo "Installed oh-my-zsh" || ( echo "Install failed"; exit 1 )
+  echo "Installed oh-my-zsh" || { echo "Install failed"; exit 1 }
 else
   echo "oh-my-zsh already installed"
 fi
