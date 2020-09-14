@@ -17,7 +17,7 @@ fi
 # ---------------------------------------------------------------------------- #
 if ! command -V zsh; 
 then 
-  $PCK_MGR install zsh -y || echo "failed zsh install, attempting $PCK_MGR update"; $PCK_MGR update -y --skip-broken; $PCK_MGR install zsh -y
+  $PCK_MGR install zsh -y || ( echo "failed zsh install, attempting $PCK_MGR update"; $PCK_MGR update -y --skip-broken; $PCK_MGR install zsh -y )
 fi
 # ---------------------------------------------------------------------------- #
 #   # https://github.com/ohmyzsh/ohmyzsh
