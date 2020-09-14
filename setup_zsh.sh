@@ -22,7 +22,7 @@ fi
 if [[ ! -d "$HOME/.oh-my-zsh" ]];
 then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended && \
-  echo "Installed oh-my-zsh" || echo "Install failed"
+  echo "Installed oh-my-zsh" || echo "Install failed"; exit 1
 else
   echo "oh-my-zsh already installed"
 fi
@@ -79,7 +79,9 @@ else
   chsh -s "/bin/zsh" $LOGNAME
 fi
 
-
+# ---------------------------------------------------------------------------- #
+# Start zsh shell
+# ---------------------------------------------------------------------------- #
 if [[ -d "$HOME/.oh-my-zsh" ]] &&\
 [[ -d "$HOME/.dotfiles" ]] &&\
 [[ -L "$HOME/.zshrc" ]];
