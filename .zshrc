@@ -75,6 +75,7 @@ alias taaarf='terraform apply -auto-approve -refresh=false'
 alias tarf='terraform apply -refresh=false'
 
 alias tsl='terraform state list'
+alias tslg='terraform state list | grep -i'
 alias tss='terraform state show'
 alias tsr='terraform state rm'
 
@@ -89,3 +90,6 @@ alias tg='terraform get -update && terraform init'
 alias tt='terraform taint'
 alias tc='terraform console'
 alias to='terraform output'
+
+# Kubectl alias
+export dry='--dry-run=client'
