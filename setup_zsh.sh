@@ -86,8 +86,8 @@ fi
 # Start zsh shell
 # ---------------------------------------------------------------------------- #
 if [[ -d "$HOME/.oh-my-zsh" ]] &&\
-[[ -d "$HOME/.dotfiles" ]] &&\
-[[ -L "$HOME/.zshrc" ]];
+  [[ -d "$HOME/.dotfiles" ]] &&\
+  [[ -L "$HOME/.zshrc" ]];
 then zsh
 else echo "something went wrong"
 fi
