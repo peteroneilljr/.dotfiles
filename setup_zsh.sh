@@ -74,12 +74,12 @@ fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership, change shell, and load zsh
 # ---------------------------------------------------------------------------- #
-if [[ $LOGNAME == "root" ]]; 
+if [[ "$(logname)" == "root" ]]; 
 then 
-  chsh -s "/bin/zsh" $LOGNAME
+  chsh -s "/bin/zsh" $(logname)
 else
-  chown -R $LOGNAME:$LOGNAME $HOME
-  chsh -s "/usr/bin/zsh" $LOGNAME
+  chown -R $(logname):$(logname) $HOME
+  chsh -s "/usr/bin/zsh" $(logname)
 fi
 
 # ---------------------------------------------------------------------------- #
