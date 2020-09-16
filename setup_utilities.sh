@@ -41,3 +41,10 @@ if ! command -V kubectl; then
 else
   echo "kubectl already installed"
 fi
+# ---------------------------------------------------------------------------- #
+# Cleanup file ownership
+# ---------------------------------------------------------------------------- #
+if [[ "$(logname)" != "root" ]]; then
+  echo "updating file ownership of home directory"
+  chown -R $(logname):$(logname) $HOME
+fi
