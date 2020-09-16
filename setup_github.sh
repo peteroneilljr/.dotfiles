@@ -9,6 +9,6 @@ Host github.com
   HostName github.com
   User git
   AddKeysToAgent yes
-  IdentityFile /home/ubuntu/.ssh/github
+  IdentityFile $HOME/.ssh/github
 CONFIG_SETTINGS
 fi
