@@ -260,13 +260,13 @@ kube_security_capabilities() {
   done
 }
 kube_security_userid() {
-  # Add User ID to container
+  # Add User ID to pod
   FILE=$1
   USERID=$2
   yq w -i "$FILE" 'spec.securityContext.runAsUser' "$USERID"
 }
 kube_security_groupid() {
-  # Add Group ID to container
+  # Add Group ID to pod
   FILE=$1
   GROUPID=$2
   yq w -i "$FILE" 'spec.securityContext.runAsGroup' "$GROUPID"
