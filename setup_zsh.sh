@@ -97,5 +97,8 @@ then
   then zsh; 
   else echo "zsh already running";
   fi
-else echo "something went wrong"
+else 
+  echo "something went wrong"
+  exit 1
 fi
+exit 0
