@@ -36,7 +36,7 @@ fi
 #   # Install zsh-autosuggestions plugin
 # ---------------------------------------------------------------------------- #
 if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
-  git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions && \
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME"/.oh-my-zsh/custom/plugins/zsh-autosuggestions && \
   echo "Installed zsh-autosuggestions" || echo "Install failed"
 else
   echo "zsh-autosuggestions already installed"
@@ -45,7 +45,7 @@ fi
 #   # Install zsh-syntax-highlighting plugin
 # ---------------------------------------------------------------------------- #
 if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]]; then
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME"/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
   echo "Installed zsh-syntax-highlighting" || echo "Install failed"
 else
   echo "zsh-syntax-highlighting already installed"
@@ -55,7 +55,7 @@ fi
 # ---------------------------------------------------------------------------- #
 if [[ ! -d "$HOME/.dotfiles" ]]; then
   # Save current zshrc file if it exists
-  git clone https://github.com/peteroneilljr/.dotfiles.git $HOME/.dotfiles && \
+  git clone https://github.com/peteroneilljr/.dotfiles.git "$HOME"/.dotfiles && \
   echo "Installed .dotfiles" || echo "Install failed"
 else
   echo ".dotfiles already installed"
@@ -64,23 +64,23 @@ fi
 # Backup old zshrc and create a symlink to new zshrc
 # ---------------------------------------------------------------------------- #
 if [[ -f "$HOME/.zshrc" ]] && [[ ! -L "$HOME/.zshrc" ]]; then 
-  mv $HOME/.zshrc $HOME/.zshrc.backup && echo "created zshrc backup"; 
+  mv "$HOME"/.zshrc "$HOME"/.zshrc.backup && echo "created zshrc backup"; 
 fi
 
 if [[ -L "$HOME/.zshrc" ]]; then 
   echo ".zshrc already linked"; 
 else 
-  ln -sv ~/.dotfiles/.zshrc $HOME;
+  ln -sv ~/.dotfiles/.zshrc "$HOME";
 fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership, change shell, and load zsh
 # ---------------------------------------------------------------------------- #
-if [[ "$(cat /etc/passwd | grep $USER | cut -d: -f7)" != *"/zsh" ]]; then
+if [[ "$(grep "$USER" /etc/passwd | cut -d: -f7)" != *"/zsh" ]]; then
   if [[ "$(logname)" == "root" ]]; then 
-    chsh -s "/bin/zsh" $(logname);
+    chsh -s "/bin/zsh" "$(logname)";
   else 
-    chown -R $(logname):$(logname) $HOME
-    chsh -s "/usr/bin/zsh" $(logname)
+    chown -R "$(logname)":"$(logname)" "$HOME"
+    chsh -s "/usr/bin/zsh" "$(logname)"
   fi
 fi
 
