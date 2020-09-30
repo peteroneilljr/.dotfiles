@@ -11,7 +11,7 @@ else
   echo "Not yum or apt: exiting" 
   exit 1
 fi
-$PCK_MGR update -y --skip-broken
+$PCK_MGR update -y --skip-broken || echo "Some packages failed to update"
 
 # ---------------------------------------------------------------------------- #
 # Setup vim
