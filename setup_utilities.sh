@@ -42,6 +42,17 @@ else
   echo "kubectl already installed"
 fi
 # ---------------------------------------------------------------------------- #
+# Install YQ 
+# ---------------------------------------------------------------------------- #
+if ! command -V yq; then
+  YQVERSION='3.4.0'
+  YQBINARY='yq_linux_amd64'
+  wget https://github.com/mikefarah/yq/releases/download/$YQVERSION/$YQBINARY -O /usr/bin/yq &&\
+    chmod +x /usr/bin/yq
+else
+  echo "yq already installed"
+fi
+# ---------------------------------------------------------------------------- #
 # Cleanup file ownership
 # ---------------------------------------------------------------------------- #
 if [[ "$(logname)" != "root" ]]; then
