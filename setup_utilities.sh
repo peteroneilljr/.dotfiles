@@ -35,12 +35,22 @@ fi
 # https://github.com/neovim/neovim/wiki/Installing-Neovim
 # https://spacevim.org/
 # ---------------------------------------------------------------------------- #
+
 if ! command -V nvim; then
-  if [[ $PCK_MGR == "/usr/bin/yum" ]]; then 
+  if ! command -V python3; then
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x nvim.appimage
+    ./nvim.appimage --appimage-extract
+    mv ./squashfs-root/usr/bin/nvim /usr/bin/nvim
+    rm -rf ./squashfs-root
+    rm nvim.appimage
+  elif [[ $PCK_MGR == "/usr/bin/yum" ]]; then 
     # adds repository for yum package manager 
     $PCK_MGR install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; 
+    $PCK_MGR install -y python3-neovim neovim
+  else
+    $PCK_MGR install -y neovim
   fi
-  $PCK_MGR install -y neovim
 else
   echo "neovim already installed"
 fi
