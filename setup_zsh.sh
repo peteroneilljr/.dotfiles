@@ -18,6 +18,8 @@ fi
 if ! command -V zsh; 
 then 
   $PCK_MGR install zsh -y || ( echo "failed zsh install, attempting $PCK_MGR update"; $PCK_MGR update -y --skip-broken; $PCK_MGR install zsh -y )
+else
+  echo "zsh already installed"
 fi
 # ---------------------------------------------------------------------------- #
 #   # https://github.com/ohmyzsh/ohmyzsh
@@ -74,12 +76,14 @@ fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership, change shell, and load zsh
 # ---------------------------------------------------------------------------- #
-if [[ "$(logname)" == "root" ]]; 
-then 
-  chsh -s "/bin/zsh" $(logname)
-else
-  chown -R $(logname):$(logname) $HOME
-  chsh -s "/usr/bin/zsh" $(logname)
+if [[ "$(cat /etc/passwd | grep $USER | cut -d: -f7)" != "*/zsh" ]];
+then
+  if [[ "$(logname)" == "root" ]]; 
+  then 
+    chsh -s "/bin/zsh" $(logname);
+  else 
+    chown -R $(logname):$(logname) $HOME
+    chsh -s "/usr/bin/zsh" $(logname)
 fi
 
 # ---------------------------------------------------------------------------- #
@@ -87,7 +91,11 @@ fi
 # ---------------------------------------------------------------------------- #
 if [[ -d "$HOME/.oh-my-zsh" ]] &&\
   [[ -d "$HOME/.dotfiles" ]] &&\
-  [[ -L "$HOME/.zshrc" ]];
-then zsh
+  [[ -L "$HOME/.zshrc" ]]
+then 
+  if [[ $SHELL != "*/zsh" ]]; 
+  then zsh; 
+  else echo "zsh already running";
+  fi
 else echo "something went wrong"
 fi
