@@ -65,7 +65,7 @@ fi
 if ! command -V yq; then
   YQVERSION='3.4.0'
   YQBINARY='yq_linux_amd64'
-  curl https://github.com/mikefarah/yq/releases/download/$YQVERSION/$YQBINARY -O /usr/bin/yq &&\
+  curl https://github.com/mikefarah/yq/releases/download/$YQVERSION/$YQBINARY -o /usr/bin/yq &&\
     chmod +x /usr/bin/yq
 else
   echo "yq already installed"
