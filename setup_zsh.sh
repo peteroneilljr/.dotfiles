@@ -18,8 +18,11 @@ fi
 # ---------------------------------------------------------------------------- #
 if ! command -V zsh; then 
   $PCK_MGR install zsh -y || \
-  ( echo "failed zsh install, attempting $PCK_MGR update"; \
-  $PCK_MGR update -y --skip-broken; $PCK_MGR install zsh -y )
+    ( 
+      echo "failed zsh install, attempting $PCK_MGR update"
+      $PCK_MGR update -y --skip-broken
+      $PCK_MGR install zsh -y 
+    )
 else
   echo "zsh already installed"
 fi
@@ -36,7 +39,8 @@ fi
 #   # Install zsh-autosuggestions plugin
 # ---------------------------------------------------------------------------- #
 if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
-  git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME"/.oh-my-zsh/custom/plugins/zsh-autosuggestions && \
+  git clone https://github.com/zsh-users/zsh-autosuggestions \
+    "$HOME"/.oh-my-zsh/custom/plugins/zsh-autosuggestions && \
   echo "Installed zsh-autosuggestions" || echo "Install failed"
 else
   echo "zsh-autosuggestions already installed"
@@ -45,7 +49,8 @@ fi
 #   # Install zsh-syntax-highlighting plugin
 # ---------------------------------------------------------------------------- #
 if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]]; then
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME"/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+    "$HOME"/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
   echo "Installed zsh-syntax-highlighting" || echo "Install failed"
 else
   echo "zsh-syntax-highlighting already installed"
@@ -64,7 +69,8 @@ fi
 # Backup old zshrc and create a symlink to new zshrc
 # ---------------------------------------------------------------------------- #
 if [[ -f "$HOME/.zshrc" ]] && [[ ! -L "$HOME/.zshrc" ]]; then 
-  mv "$HOME"/.zshrc "$HOME"/.zshrc.backup && echo "created zshrc backup"; 
+  mv "$HOME"/.zshrc "$HOME"/.zshrc.backup && \
+  echo "created zshrc backup"; 
 fi
 
 if [[ -L "$HOME/.zshrc" ]]; then 
