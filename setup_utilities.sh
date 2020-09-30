@@ -73,7 +73,12 @@ fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership
 # ---------------------------------------------------------------------------- #
-if [[ "$(logname)" != "root" ]]; then
+if ! logname; then
+  THISUSER="$USER"
+else 
+  THISUSER="$(logname)"
+fi
+if [[ "$THISUSER" != "root" ]]; then
   echo "updating file ownership of home directory"
-  chown -R $(logname):$(logname) $HOME
+  chown -R "$THISUSER":"$THISUSER" "$HOME"
 fi
