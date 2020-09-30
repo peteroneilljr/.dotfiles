@@ -75,7 +75,7 @@ fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership, change shell, and load zsh
 # ---------------------------------------------------------------------------- #
-if [[ "$(cat /etc/passwd | grep $USER | cut -d: -f7)" != "*/zsh" ]]; then
+if [[ "$(cat /etc/passwd | grep $USER | cut -d: -f7)" != *"/zsh" ]]; then
   if [[ "$(logname)" == "root" ]]; then 
     chsh -s "/bin/zsh" $(logname);
   else 
@@ -91,7 +91,7 @@ if [[ -d "$HOME/.oh-my-zsh" ]] &&\
   [[ -d "$HOME/.dotfiles" ]] &&\
   [[ -L "$HOME/.zshrc" ]]; 
 then 
-  if [[ $SHELL != "*/zsh" ]]; then 
+  if [[ $SHELL != *"/zsh" ]]; then 
     zsh
   else echo "zsh already running";
   fi
