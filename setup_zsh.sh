@@ -81,12 +81,17 @@ fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership, change shell, and load zsh
 # ---------------------------------------------------------------------------- #
+if ! logname; then
+  THISUSER="$USER"
+else 
+  THISUSER="$(logname)"
+fi
 if [[ "$(grep "$USER" /etc/passwd | cut -d: -f7)" != *"/zsh" ]]; then
-  if [[ "$(logname)" == "root" ]]; then 
-    chsh -s "/bin/zsh" "$(logname)";
+  if [[ "$THISUSER" == "root" ]]; then 
+    chsh -s "/bin/zsh" "$THISUSER";
   else 
-    chown -R "$(logname)":"$(logname)" "$HOME"
-    chsh -s "/usr/bin/zsh" "$(logname)"
+    chown -R "$THISUSER":"$THISUSER" "$HOME"
+    chsh -s "/usr/bin/zsh" "$THISUSER"
   fi
 fi
 
