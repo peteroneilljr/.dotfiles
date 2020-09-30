@@ -1,6 +1,21 @@
 #!/bin/bash -x
 
 # ---------------------------------------------------------------------------- #
+# Flags
+# ---------------------------------------------------------------------------- #
+SKIPUPDATE=false
+while getopts ":s" opt; do
+  case ${opt} in
+    s )
+      SKIPUPDATE=true
+      ;;
+    \? )
+      echo "Invalid option: $OPTARG" 1>&2
+      ;;
+  esac
+done
+shift $((OPTIND -1))
+# ---------------------------------------------------------------------------- #
 # Find package manager
 # ---------------------------------------------------------------------------- #
 if [[ -x "/usr/bin/apt-get" ]]; then 
@@ -11,7 +26,9 @@ else
   echo "Not yum or apt: exiting" 
   exit 1
 fi
-$PCK_MGR update -y --skip-broken || echo "Some packages failed to update"
+if [[ $SKIPUPDATE == false ]]; then
+  $PCK_MGR update -y || echo "Some packages failed to update"
+fi
 
 # ---------------------------------------------------------------------------- #
 # Setup vim
