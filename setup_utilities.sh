@@ -1,4 +1,4 @@
-#!/bin/bash -xe
+#!/bin/bash -x
 
 # ---------------------------------------------------------------------------- #
 # Find package manager
@@ -8,9 +8,10 @@ if [[ -x "/usr/bin/apt-get" ]]; then
 elif [[ -x "/usr/bin/yum" ]]; then 
   PCK_MGR="/usr/bin/yum"
 else 
-  echo "Not yum or apt exiting" 
+  echo "Not yum or apt: exiting" 
+  exit 1
 fi
-$PCK_MGR update -y
+$PCK_MGR update -y --skip-broken
 
 # ---------------------------------------------------------------------------- #
 # Setup vim
