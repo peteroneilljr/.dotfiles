@@ -104,7 +104,7 @@ if [[ -d "$HOME/.oh-my-zsh" ]] &&\
   [[ -L "$HOME/.zshrc" ]]; 
 then 
   if [[ $SHELL != *"/zsh" ]]; then
-    zsh
+    runuser -l "$THISUSER" -c 'zsh'
   else echo "zsh already running";
   fi
 else 
