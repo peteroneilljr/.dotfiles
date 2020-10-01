@@ -85,7 +85,7 @@ if ! logname; then
   THISUSER="$USER"
 else 
   THISUSER="$(logname)"
-fi
+fi && echo "User is $THISUSER"
 if [[ "$(grep "$THISUSER" /etc/passwd | cut -d: -f7)" != *"/zsh" ]]; then
   if [[ "$THISUSER" == "root" ]]; then 
     chsh -s "/bin/zsh" "$THISUSER";
