@@ -6,6 +6,7 @@
 # ---------------------------------------------------------------------------- #
 # Find package manager
 # ---------------------------------------------------------------------------- #
+
 if [[ -x "/usr/bin/apt-get" ]]; then 
   PCK_MGR="/usr/bin/apt-get"
 elif [[ -x "/usr/bin/yum" ]]; then 
@@ -13,9 +14,11 @@ elif [[ -x "/usr/bin/yum" ]]; then
 else 
   echo "Not yum or apt exiting" 
 fi
+
 # ---------------------------------------------------------------------------- #
 #   # install zsh
 # ---------------------------------------------------------------------------- #
+
 if ! command -V zsh; then 
   $PCK_MGR install zsh -y || \
     ( 
@@ -26,18 +29,22 @@ if ! command -V zsh; then
 else
   echo "zsh already installed"
 fi
+
 # ---------------------------------------------------------------------------- #
 #   # https://github.com/ohmyzsh/ohmyzsh
 # ---------------------------------------------------------------------------- #
+
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended && \
   echo "Installed oh-my-zsh"
 else
   echo "oh-my-zsh already installed"
 fi
+
 # ---------------------------------------------------------------------------- #
 #   # Install zsh-autosuggestions plugin
 # ---------------------------------------------------------------------------- #
+
 if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
   git clone https://github.com/zsh-users/zsh-autosuggestions \
     "$HOME"/.oh-my-zsh/custom/plugins/zsh-autosuggestions && \
@@ -45,9 +52,11 @@ if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
 else
   echo "zsh-autosuggestions already installed"
 fi
+
 # ---------------------------------------------------------------------------- #
 #   # Install zsh-syntax-highlighting plugin
 # ---------------------------------------------------------------------------- #
+
 if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
     "$HOME"/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting && \
@@ -55,9 +64,11 @@ if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]]; then
 else
   echo "zsh-syntax-highlighting already installed"
 fi
+
 # ---------------------------------------------------------------------------- #
 # Download dotfiles https://github.com/peteroneilljr/.dotfiles.git
 # ---------------------------------------------------------------------------- #
+
 if [[ ! -d "$HOME/.dotfiles" ]]; then
   # Save current zshrc file if it exists
   git clone https://github.com/peteroneilljr/.dotfiles.git "$HOME"/.dotfiles && \
@@ -65,9 +76,11 @@ if [[ ! -d "$HOME/.dotfiles" ]]; then
 else
   echo ".dotfiles already installed"
 fi
+
 # ---------------------------------------------------------------------------- #
 # Backup old zshrc and create a symlink to new zshrc
 # ---------------------------------------------------------------------------- #
+
 if [[ -f "$HOME/.zshrc" ]] && [[ ! -L "$HOME/.zshrc" ]]; then 
   mv "$HOME"/.zshrc "$HOME"/.zshrc.backup && \
   echo "created zshrc backup"; 
@@ -78,14 +91,21 @@ if [[ -L "$HOME/.zshrc" ]]; then
 else 
   ln -sv ~/.dotfiles/.zshrc "$HOME";
 fi
+
 # ---------------------------------------------------------------------------- #
-# Cleanup file ownership, change shell, and load zsh
+# Find current user
 # ---------------------------------------------------------------------------- #
+
 if ! logname; then
   THISUSER="$USER"
 else 
   THISUSER="$(logname)"
 fi && echo "User is $THISUSER"
+
+# ---------------------------------------------------------------------------- #
+# Cleanup file ownership, change shell, and load zsh
+# ---------------------------------------------------------------------------- #
+
 if [[ "$(grep "$THISUSER" /etc/passwd | cut -d: -f7)" != *"/zsh" ]]; then
   if [[ "$THISUSER" == "root" ]]; then 
     chsh -s "/bin/zsh" "$THISUSER";
@@ -99,6 +119,7 @@ fi
 # ---------------------------------------------------------------------------- #
 # Start zsh shell
 # ---------------------------------------------------------------------------- #
+
 if [[ -d "$HOME/.oh-my-zsh" ]] &&\
   [[ -d "$HOME/.dotfiles" ]] &&\
   [[ -L "$HOME/.zshrc" ]]; 
