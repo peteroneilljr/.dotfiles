@@ -91,6 +91,7 @@ if [[ "$(grep "$THISUSER" /etc/passwd | cut -d: -f7)" != *"/zsh" ]]; then
     chsh -s "/bin/zsh" "$THISUSER";
   else 
     chown -R "$THISUSER":"$THISUSER" "$HOME"
+    chmod -R g-w "$HOME"
     chsh -s "/usr/bin/zsh" "$THISUSER"
   fi
 fi
@@ -102,7 +103,7 @@ if [[ -d "$HOME/.oh-my-zsh" ]] &&\
   [[ -d "$HOME/.dotfiles" ]] &&\
   [[ -L "$HOME/.zshrc" ]]; 
 then 
-  if [[ $SHELL != *"/zsh" ]]; then 
+  if [[ $SHELL != *"/zsh" ]]; then
     zsh
   else echo "zsh already running";
   fi
