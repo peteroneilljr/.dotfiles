@@ -41,9 +41,7 @@ if ! command -V nvim; then
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     chmod u+x nvim.appimage
     ./nvim.appimage --appimage-extract
-    mv ./squashfs-root/usr/bin/nvim /usr/bin/nvim
-    rm -rf ./squashfs-root
-    rm nvim.appimage
+    ln -sv $PWD/squashfs-root/usr/bin/nvim /usr/bin
   elif [[ $PCK_MGR == "/usr/bin/yum" ]]; then 
     # adds repository for yum package manager 
     $PCK_MGR install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; 
