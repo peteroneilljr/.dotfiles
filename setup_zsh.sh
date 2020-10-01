@@ -13,6 +13,7 @@ elif [[ -x "/usr/bin/yum" ]]; then
   PCK_MGR="/usr/bin/yum"
 else 
   echo "Not yum or apt exiting" 
+  exit 1
 fi
 
 # ---------------------------------------------------------------------------- #
@@ -120,9 +121,9 @@ fi
 # Start zsh shell
 # ---------------------------------------------------------------------------- #
 
-if [[ -d "$HOME/.oh-my-zsh" ]] &&\
-  [[ -d "$HOME/.dotfiles" ]] &&\
-  [[ -L "$HOME/.zshrc" ]]; 
+if [[ -d "$HOME/.oh-my-zsh" ]] \
+  && [[ -d "$HOME/.dotfiles" ]] \
+  && [[ -L "$HOME/.zshrc" ]]; 
 then 
   if [[ $SHELL != *"/zsh" ]]; then
     runuser -l "$THISUSER" -c 'zsh'
