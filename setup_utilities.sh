@@ -3,6 +3,10 @@
 # ---------------------------------------------------------------------------- #
 # Flags
 # ---------------------------------------------------------------------------- #
+# -s skip updates 
+# 
+# 
+# 
 SKIPUPDATE=false
 while getopts ":s" opt; do
   case ${opt} in
@@ -78,6 +82,18 @@ if ! command -V yq; then
   mv ./$YQBINARY /usr/bin/yq
 else
   echo "yq already installed"
+fi
+# ---------------------------------------------------------------------------- #
+# Install strongDM 
+# ---------------------------------------------------------------------------- #
+if ! command -V sdm; then
+  curl -J -O -L https://app.strongdm.com/releases/cli/linux && \
+  unzip sdmcli* && \
+  rm -f sdmcli* && \
+  chmod +x ./sdm && \
+  mv ./sdm /usr/bin/sdm
+else
+  echo "sdm already installed"
 fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership
