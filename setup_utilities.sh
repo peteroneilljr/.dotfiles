@@ -90,8 +90,7 @@ if ! command -V sdm; then
   curl -J -O -L https://app.strongdm.com/releases/cli/linux && \
   unzip sdmcli* && \
   rm -f sdmcli* && \
-  chmod +x ./sdm && \
-  mv ./sdm /usr/bin/sdm
+  ./sdm install --nologin --user="$(logname)"
 else
   echo "sdm already installed"
 fi
