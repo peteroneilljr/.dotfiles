@@ -25,7 +25,7 @@ if ! command -V zsh; then
     ( 
       echo "failed zsh install, attempting $PCK_MGR update"
       $PCK_MGR update -y --skip-broken
-      $PCK_MGR install zsh -y 
+      $PCK_MGR install zsh -y || ( echo "failed zsh install"; exit 1 )
     )
 else
   echo "zsh already installed"
