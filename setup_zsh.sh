@@ -1,7 +1,7 @@
 #!/bin/bash -xe
 
 # To install
-# sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/peteroneilljr/.dotfiles/master/setup_zsh.sh)"
+# sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/peteroneilljr/.dotfiles/master/setup_zsh.sh)"
 
 # ---------------------------------------------------------------------------- #
 # Find package manager
@@ -12,7 +12,7 @@ if [[ -x "/usr/bin/apt-get" ]]; then
 elif [[ -x "/usr/bin/yum" ]]; then 
   PCK_MGR="/usr/bin/yum"
 elif [[ -x "/usr/bin/brew" ]]; then 
-  PCK_MGR="/usr/bin/brew"
+  PCK_MGR="/usr/local/bin/brew"
 else 
   echo "Package manager not in; apt, yum or brew." 
   exit 1
