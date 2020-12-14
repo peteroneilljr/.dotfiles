@@ -11,7 +11,7 @@ if [[ -x "/usr/bin/apt-get" ]]; then
   PCK_MGR="/usr/bin/apt-get"
 elif [[ -x "/usr/bin/yum" ]]; then 
   PCK_MGR="/usr/bin/yum"
-elif [[ -x "/usr/bin/brew" ]]; then 
+elif [[ -x "/usr/local/bin/brew" ]]; then 
   PCK_MGR="/usr/local/bin/brew"
 else 
   echo "Package manager not in; apt, yum or brew." 
