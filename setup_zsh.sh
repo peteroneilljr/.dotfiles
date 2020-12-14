@@ -11,8 +11,10 @@ if [[ -x "/usr/bin/apt-get" ]]; then
   PCK_MGR="/usr/bin/apt-get"
 elif [[ -x "/usr/bin/yum" ]]; then 
   PCK_MGR="/usr/bin/yum"
+elif [[ -x "/usr/bin/brew" ]]; then 
+  PCK_MGR="/usr/bin/brew"
 else 
-  echo "Not yum or apt exiting" 
+  echo "Package manager not in; apt, yum or brew." 
   exit 1
 fi
 
