@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create a key for github
-if [[ -z ~/.ssh/github ]];
+if [[ ! -z ~/.ssh/github ]];
 then
   ssh-keygen -t rsa -b 4096 -C "peteroneilljr@gmail.com" -f $HOME/.ssh/github -P ""
   cat <<CONFIG_SETTINGS >> ~/.ssh/config
