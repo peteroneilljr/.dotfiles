@@ -83,7 +83,16 @@ if ! command -V yq; then
 else
   echo "yq already installed"
 fi
-
+# ---------------------------------------------------------------------------- #
+# Install Terraform 
+# ---------------------------------------------------------------------------- #
+if ! command -V terraform; then
+  curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+  sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+  csudo apt-get update && sudo apt-get install terraform
+else
+  echo "Terraform already installed"
+fi
 # ---------------------------------------------------------------------------- #
 # Cleanup file ownership
 # ---------------------------------------------------------------------------- #
