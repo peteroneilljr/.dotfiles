@@ -12,4 +12,6 @@ Host github.com
   AddKeysToAgent yes
   IdentityFile $HOME/.ssh/github
 CONFIG_SETTINGS
+  echo "add public key to GitHub"
+  echo "pbcopy $HOME/.ssh/github.pub"
 fi
