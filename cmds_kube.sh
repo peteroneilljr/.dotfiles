@@ -3,6 +3,17 @@
 alias ketish='kubectl run busybox --image=busybox --rm -it --restart=Never -- /bin/sh'
 alias ketiwget='kubectl run busybox --image=busybox --rm -it --restart=Never -- wget --timeout 2 -O-'
 
+```
+yq has been updated and requires all the commands to be rewritten in the new format
+https://mikefarah.gitbook.io/yq/upgrading-from-v3
+
+yq 3.x
+yq write -- - 'spec.template.spec.containers[0].args[+]' '--kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname'
+
+yq 4.x
+yq eval '.spec.template.spec.containers[0].args += "--kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname"' -
+```
+
 export dry='--dry-run=client'
 export col_name='NAME:metadata.name'
 export col_image='IMAGE:spec.containers[].image'
@@ -209,6 +220,7 @@ k -n kube-system get deploy metrics-server -oyaml | \
 	yq write -- - 'spec.template.spec.containers[0].args[+]' '--kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname' | \
 	yq write -- - 'spec.template.spec.containers[0].args[+]' '--kubelet-insecure-tls' | \
 	kubectl apply -f -
+  
 }
 # Kube networkPolicy
 kube_network_policy_create() {
