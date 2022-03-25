@@ -45,3 +45,8 @@ if ! command -V jq; then
 else 
   echo "jq already installed"
 fi
+if ! command -V gmailctl; then
+  brew install gmailctl
+else 
+  echo "gmailctl already installed"
+fi
