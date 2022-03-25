@@ -13,5 +13,5 @@ Host github.com
   IdentityFile $HOME/.ssh/github
 CONFIG_SETTINGS
   echo "add public key to GitHub"
-  echo "pbcopy $HOME/.ssh/github.pub"
+  echo "cat $HOME/.ssh/github.pub | pbcopy"
 fi
