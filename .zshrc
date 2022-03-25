@@ -18,15 +18,25 @@ export UPDATE_ZSH_DAYS=13
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
 plugins=(
-  git 
-  gitignore
+  aws
+  fig
+  gh
+  git
   kubectl
   history
+  macos
+  sublime
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
 
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sublime
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gh
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fig
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/aws
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/kubectl
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history
 # https://github.com/zsh-users/zsh-autosuggestions
