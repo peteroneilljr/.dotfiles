@@ -65,7 +65,7 @@ alias reload='source ~/.zshrc'
 alias zshrc='vim ~/.zshrc'
 
 # source Terraform commands
-source ./cmds_terraform.sh
+# source ./cmds_terraform.sh
 
 # source Kubernetes commands
-source ./cmds_kube.sh
+# source ./cmds_kube.sh
