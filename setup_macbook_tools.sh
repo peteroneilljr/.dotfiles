@@ -15,6 +15,11 @@ if ! command -V python3; then
 else 
   echo "python3 already installed"
 fi
+if ! command -V go; then
+  brew install go
+else 
+  echo "go already installed"
+fi
 if ! command -V git; then
   brew install git
 else 
