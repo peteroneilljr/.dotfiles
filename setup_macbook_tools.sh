@@ -25,10 +25,20 @@ if ! command -V terraform; then
 else 
   echo "terraform already installed"
 fi
+# ---------------------------------------------------------------------------- #
+# Setup vim editor
+# https://github.com/neovim/neovim/wiki/Installing-Neovim
+# https://spacevim.org/
+# ---------------------------------------------------------------------------- #
 if ! command -V nvim; then
   brew install neovim
 else 
   echo "neovim already installed"
+fi
+if [[ ! -d "$HOME/.SpaceVim" ]]; then
+  curl -sLf https://spacevim.org/install.sh | bash
+else
+  echo "SpaceVim already installed"
 fi
 if ! command -V kubectl; then
   brew install kubectl
