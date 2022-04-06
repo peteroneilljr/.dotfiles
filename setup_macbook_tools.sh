@@ -6,7 +6,7 @@
 # Install homebrew and common tools
 # ---------------------------------------------------------------------------- #
 if ! command -V brew; then
-  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 else 
   echo "brew already installed"
 fi
