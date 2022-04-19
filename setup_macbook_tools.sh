@@ -65,3 +65,14 @@ if ! command -V gmailctl; then
 else 
   echo "gmailctl already installed"
 fi
+if ! command -V aws; then
+  brew install awscli
+else 
+  echo "aws already installed"
+fi
+fi
+if ! command -V cfn; then
+  brew install cloudformation-cli
+else 
+  echo "cfn already installed"
+fi
