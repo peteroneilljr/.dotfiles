@@ -79,3 +79,8 @@ alias zshrc='vim ~/.zshrc'
 
 # source Kubernetes commands
 # source ./cmds_kube.sh
+
+# # Skip forward/back a word with opt-arrow
+bindkey -e
+bindkey '\e\e[C' forward-word
+bindkey '\e\e[D' backward-word 
