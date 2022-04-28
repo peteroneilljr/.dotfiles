@@ -84,3 +84,13 @@ alias zshrc='vim ~/.zshrc'
 bindkey -e
 bindkey '\e\e[C' forward-word
 bindkey '\e\e[D' backward-word 
+
+# cat eof
+cateof() {
+  # Creates a multiline file
+  FILENAME=$1
+  CONTENTS=$2
+cat <<EOF > $FILENAME
+$CONTENTS
+EOF
+}
